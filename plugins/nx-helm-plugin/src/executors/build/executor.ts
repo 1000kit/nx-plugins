@@ -8,7 +8,7 @@ import merge from 'lodash.merge';
 
 export default async function runExecutor(options: BuildExecutorSchema, context: ExecutorContext) {
   
-  const _prefix = `[${context.projectName}/${context.targetName}]`;
+  const _prefix = `[${context.projectName}/${context.target.command}]`;
 
   console.info('%s executing helm package for version %s ...', _prefix, options.version);
   console.info('%s options %s', _prefix, JSON.stringify(options, null, 2));
