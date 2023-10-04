@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "version": 2,
+  "cli": "nx",
+  "title": "Helm build",
+  "description": "Create helm package and push it to the oci registry",
+  "type": "object",
+  "properties": {
+    "chartName": {
+      "type": "string",
+      "description": "Name of the helm chart as it should be saved. By default a projects name will be used"
+    },
+    "registry": {
+      "type": "string",
+      "description": "Helm chart registry"
+    },    
+    "version": {
+      "type": "string",
+      "description": "Helm chart version"
+    },
+    "dir": {
+      "type": "string",
+      "default": "helm",
+      "description": "Helm chart directory. Default directory: <app>/src/helm"
+    },        
+    "push": {
+      "type": "boolean",
+      "description": "Whether to push helm package to OCI registry"
+    },
+    "patchValuesYaml": {
+      "type": "object",
+      "description": "Patch values file"
+    },
+    "patchChartYaml": {
+      "type": "object",
+      "description": "Patch values file"
+    }    
+  },
+  "required": []
+}

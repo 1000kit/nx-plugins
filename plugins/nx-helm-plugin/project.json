@@ -1,0 +1,66 @@
+{
+  "name": "nx-helm-plugin",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "plugins/nx-helm-plugin/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/plugins/nx-helm-plugin",
+        "main": "plugins/nx-helm-plugin/src/index.ts",
+        "tsConfig": "plugins/nx-helm-plugin/tsconfig.lib.json",
+        "assets": [
+          "plugins/nx-helm-plugin/*.md",
+          {
+            "input": "./plugins/nx-helm-plugin/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./plugins/nx-helm-plugin/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./plugins/nx-helm-plugin",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./plugins/nx-helm-plugin",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "plugins/nx-helm-plugin/**/*.ts",
+          "plugins/nx-helm-plugin/package.json",
+          "plugins/nx-helm-plugin/executors.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "plugins/nx-helm-plugin/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}
