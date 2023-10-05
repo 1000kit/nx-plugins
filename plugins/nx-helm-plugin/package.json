@@ -1,6 +1,19 @@
 {
   "name": "@1000kit/nx-helm-plugin",
   "version": "0.0.1",
+  "license": "Apache-2.0",
+  "description": "nx helm plugin",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "nx",
+    "helm",
+    "release"
+  ],
+  "author": {
+    "name": "Andrej Petras"
+  },   
   "dependencies": {
     "@nx/devkit": "16.9.1",
     "tslib": "^2.3.0"

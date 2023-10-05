@@ -22,41 +22,30 @@ export default async function runExecutor(options: BuildExecutorSchema, context:
 
 
   if (options.patchChartYaml) {
-    const valuesFile = helmDir + '/Chart.yaml';
-    patchYamlFile(_prefix, valuesFile, options.patchChartYaml);
+    patchYamlFile(_prefix, helmDir + '/Chart.yaml', options.patchChartYaml);
   }  
   
   if (options.patchValuesYaml) {
-    const valuesFile = helmDir + '/values.yaml';
-    patchYamlFile(_prefix, valuesFile, options.patchValuesYaml);
+    patchYamlFile(_prefix, helmDir + '/values.yaml', options.patchValuesYaml);
   }
   
   try {
     await cmd(_prefix, `helm dependency update ${context.cwd}/${helmDir}`);
+
+    await cmd(_prefix, `helm package ${context.cwd}/${helmDir} --version ${options.version}`);
+
+    const packageFile = context.cwd + '/' + chartName + '-' + options.version + ".tgz";
+    if (options.push) {
+        await cmd(_prefix, `helm push ${packageFile} ${options.registry}`);
+    } else {
+      console.info('%s skip push release version of the helm chart file %s', _prefix, packageFile);
+    }
+
   } catch (err) {    
-    console.error('%s helm dependency failing because of err in: %s', _prefix, err);
-    return { success: false }
-  }
-  try {
-    await cmd(_prefix, `helm package ${context.cwd}/${helmDir}`);
-  } catch (err) {    
-    console.error('%s helm package failing because of err in: %s', _prefix, err);
+    console.error('%s err in: %s', _prefix, err);
     return { success: false }
   }
 
-  const packageFile = context.cwd + '/' + chartName + '-' + options.version + ".tgz";
-  if (options.push) {
-    
-    try {
-      await cmd(_prefix, `helm push ${packageFile} ${options.registry}`);
-    } catch (err) {    
-      console.error('%s helm push failing because of err in: %s', _prefix, err);
-      return { success: false }
-    }
-  } else {
-    console.info('%s skip push release version of the helm chart %s', _prefix, packageFile);
-  }
-  
   return {
     success: true,
   };
@@ -67,11 +56,9 @@ function patchYamlFile(_prefix: string, file: string, data: any) {
   let content = fs.readFileSync(file, 'utf8');
   let yaml = parse(content);  
   yaml = merge(yaml, data);
-  content = stringify(data);
+  content = stringify(yaml);
   fs.writeFileSync(file, content, {encoding:'utf8',flag:'w'})
 }
-
-
 
 async function cmd(_prefix: string, cmd: string) {
   console.log('%s executing : %s', _prefix, cmd);
