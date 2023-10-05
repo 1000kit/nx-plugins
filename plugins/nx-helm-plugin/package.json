@@ -16,7 +16,9 @@
   },
   "dependencies": {
     "@nx/devkit": "16.9.1",
-    "tslib": "^2.3.0"
+    "lodash.merge": "^4.6.2",
+    "tslib": "^2.3.0",
+    "yaml": "^2.3.2"
   },
   "type": "commonjs",
   "main": "./src/index.js",
