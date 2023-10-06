@@ -5,7 +5,7 @@ export default async function runExecutor(options: ReleaseExecutorSchema, contex
   const _prefix = `[${context.projectName}/${context.target.command}]`;
 
   console.info('%s executing helm release ...', _prefix);
-  console.debug('%s options %s', _prefix, JSON.stringify(options, null, 2));
+  // console.debug('%s options %s', _prefix, JSON.stringify(options, null, 2));
   
   return {
     success: true,

@@ -11,7 +11,7 @@ export default async function runExecutor(options: BuildExecutorSchema, context:
   const _prefix = `[${context.projectName}/${context.target.command}]`;
 
   console.info('%s executing helm package for version %s ...', _prefix, options.version);
-  console.debug('%s options %s', _prefix, JSON.stringify(options, null, 2));
+  // console.debug('%s options %s', _prefix, JSON.stringify(options, null, 2));
 
   const projSourceDir = context.projectsConfigurations.projects[context.projectName].sourceRoot;
 
