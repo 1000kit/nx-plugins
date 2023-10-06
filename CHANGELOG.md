@@ -1,3 +1,16 @@
+## [1.1.0](https://github.com/1000kit/nx-plugins/compare/v1.0.0...v1.1.0) (2023-10-06)
+
+
+### Features
+
+* add environment variable for push helm package ([90eb9b7](https://github.com/1000kit/nx-plugins/commit/90eb9b74049de4f0d24fc058ede675914ac1f478))
+* disable debug log ([c23bfbc](https://github.com/1000kit/nx-plugins/commit/c23bfbcfaa2a7bc352af28e67ef0e072db3ac52b))
+
+
+### Chores
+
+* **docs:** update documentation ([13df0e0](https://github.com/1000kit/nx-plugins/commit/13df0e0e04cfd6ab4715bcf1486b82c06ba7a1b9))
+
 ## 1.0.0 (2023-10-05)
 
 
