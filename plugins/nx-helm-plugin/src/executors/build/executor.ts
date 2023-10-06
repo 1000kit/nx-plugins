@@ -5,6 +5,7 @@ import { exec } from 'child_process';
 import * as fs from 'fs';
 import { parse, stringify } from 'yaml';
 import merge from 'lodash.merge';
+import { getBooleanInput } from '@nx-tools/core';
 
 export default async function runExecutor(options: BuildExecutorSchema, context: ExecutorContext) {
   
@@ -17,6 +18,9 @@ export default async function runExecutor(options: BuildExecutorSchema, context:
 
   const chartName = options.chartName || context.projectName;
   const helmDir = projSourceDir + '/' + options.dir;
+
+  const prefix = 'tkit_helm'
+  const push = getBooleanInput('push', { prefix, fallback: `${options.push}` || 'false' });
 
   console.info('%s helm directory: %s', _prefix, helmDir)
 
@@ -35,8 +39,8 @@ export default async function runExecutor(options: BuildExecutorSchema, context:
     await cmd(_prefix, `helm package ${context.cwd}/${helmDir} --version ${options.version}`);
 
     const packageFile = context.cwd + '/' + chartName + '-' + options.version + ".tgz";
-    if (options.push) {
-        await cmd(_prefix, `helm push ${packageFile} ${options.registry}`);
+    if (push) {
+       await cmd(_prefix, `helm push ${packageFile} ${options.registry}`);
     } else {
       console.info('%s skip push release version of the helm chart file %s', _prefix, packageFile);
     }
