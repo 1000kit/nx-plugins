@@ -1,3 +1,16 @@
+## [1.2.0](https://github.com/1000kit/nx-plugins/compare/v1.1.0...v1.2.0) (2023-10-09)
+
+
+### Features
+
+* add docker release ([7c626db](https://github.com/1000kit/nx-plugins/commit/7c626db935f64792c07c4a4a56f0b8dd3d5a8e3f))
+
+
+### Chores
+
+* **deps:** update dependencies ([0d937c3](https://github.com/1000kit/nx-plugins/commit/0d937c36e5561dd51d5c79a3e8527f81d1bd9685))
+* **tests:** disable tests ([96a394b](https://github.com/1000kit/nx-plugins/commit/96a394b3d5f618f929010ca38d9bd362f3a9fa04))
+
 ## [1.1.0](https://github.com/1000kit/nx-plugins/compare/v1.0.0...v1.1.0) (2023-10-06)
 
 
