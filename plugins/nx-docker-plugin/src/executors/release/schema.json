@@ -5,6 +5,16 @@
   "title": "Docker release",
   "description": "Create docker relase from rc version and push the release image to the oci registry",
   "type": "object",
-  "properties": {},
+  "properties": {
+    "push": {
+      "type": "boolean",
+      "default": "false",
+      "description": "Whether to push helm package to OCI registry"
+    },
+    "image": {
+      "type": "string",
+      "description": "Image"
+    }      
+  },
   "required": []
 }

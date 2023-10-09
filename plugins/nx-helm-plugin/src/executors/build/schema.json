@@ -25,6 +25,7 @@
     },        
     "push": {
       "type": "boolean",
+      "default": "false",
       "description": "Whether to push helm package to OCI registry"
     },
     "patchValuesYaml": {

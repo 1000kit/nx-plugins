@@ -5,6 +5,28 @@
   "title": "Helm release executor",
   "description": "Create helm relase from rc version and push it to the oci registry",
   "type": "object",
-  "properties": {},
+  "properties": {
+    "chartName": {
+      "type": "string",
+      "description": "Name of the helm chart as it should be saved. By default a projects name will be used"
+    },    
+    "push": {
+      "type": "boolean",
+      "default": "false",
+      "description": "Whether to push helm package to OCI registry"
+    },
+    "registry": {
+      "type": "string",
+      "description": "Helm chart registry"
+    },
+    "patchValuesYaml": {
+      "type": "object",
+      "description": "Patch values file"
+    },
+    "patchChartYaml": {
+      "type": "object",
+      "description": "Patch values file"
+    }              
+  },
   "required": []
 }

@@ -15,8 +15,11 @@
     "name": "Andrej Petras"
   },
   "dependencies": {
+    "@nx-tools/core": "^5.0.3",
     "@nx/devkit": "16.9.1",
-    "tslib": "^2.3.0"
+    "git-semver-tags": "^7.0.1",
+    "tslib": "^2.3.0",
+    "@types/semver": "7.5.3"
   },
   "type": "commonjs",
   "main": "./src/index.js",

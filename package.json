@@ -9,6 +9,7 @@
     "@nx/devkit": "16.9.1",
     "@nx/plugin": "^16.9.1",
     "@swc/helpers": "~0.5.2",
+    "git-semver-tags": "^7.0.1",
     "lodash.merge": "^4.6.2",
     "tslib": "^2.3.0",
     "yaml": "^2.3.2"
