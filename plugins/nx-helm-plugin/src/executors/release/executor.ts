@@ -19,7 +19,7 @@ export default async function runExecutor(options: ReleaseExecutorSchema, contex
   const versions = tags.map((tag) => tag.substring(tagPrefix.length));
   const chartName = options.chartName || context.projectName;
 
-  let [releaseVersion, preReleaseVersion] = versions.sort(semver.rcompare);
+  const [releaseVersion, preReleaseVersion] = versions.sort(semver.rcompare);
   if (semver.prerelease(releaseVersion) != null) {
     console.error('%s last tag is not release tag: %s ...', _prefix, releaseVersion)
     return {

@@ -18,7 +18,7 @@ export default async function runExecutor(options: ReleaseExecutorSchema, contex
   const tags: string[] = await gitSemVerTags({tagPrefix: tagPrefix });  
   const versions = tags.map((tag) => tag.substring(tagPrefix.length));
 
-  let [releaseVersion, preReleaseVersion] = versions.sort(semver.rcompare);
+  const [releaseVersion, preReleaseVersion] = versions.sort(semver.rcompare);
   if (semver.prerelease(releaseVersion) != null) {
     console.error('%s last tag is not release tag: %s ...', _prefix, releaseVersion)
     return {
